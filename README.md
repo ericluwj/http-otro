@@ -1,6 +1,6 @@
 # http-otro
 
-A configuration lib and caller for (isomorphic-fetch)[https://github.com/matthew-andrews/isomorphic-fetch]:
+A configuration lib and caller for [isomorphic-fetch](https://github.com/matthew-andrews/isomorphic-fetch):
 
 ```
 import http from 'http-otro'
