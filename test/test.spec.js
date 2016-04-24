@@ -1,5 +1,5 @@
 import expect from 'expect'
-import http from '../src'
+import { client, response } from '../src'
 import testServer from '../test-server'
 
 describe('Requests should be configured as expected', ()=>{
@@ -32,7 +32,7 @@ describe('Requests should be configured as expected', ()=>{
   }
 
   before((done)=>{
-    lib = http({host: url});
+    lib = client({host: url});
     testServer().then(done);
   })
 
@@ -50,5 +50,12 @@ describe('Requests should be configured as expected', ()=>{
 
   it('Delete requests should receive expected body', (done)=>{
     queryTest('del', done);
+  });
+
+  it('Should handle a json response', (done)=>{
+    response.json(lib.get('/json')).then((json)=>{
+      expect(JSON.stringify(json)).toBe(JSON.stringify({foo: 'bar'}));
+      done();
+    });
   });
 })

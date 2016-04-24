@@ -16,6 +16,10 @@ let echoQs = (req, res)=>{
 
 export default function(){
   let p = new Promise((resolve)=>{
+    app.get('/json', (req, res)=>{
+      res.json({foo: 'bar'});
+    });
+
     app.post('/test', echoBody);
 
     app.put('/test', echoBody);
