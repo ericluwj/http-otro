@@ -7,7 +7,12 @@ export default function(defaults={}){
     var arr = [];
     for(var p in params){
       if (params.hasOwnProperty(p)) {
-        arr.push(encodeURIComponent(p) + "=" + encodeURIComponent(params[p]));
+        if (Array.isArray(params[p])) {
+          for (var i = 0; i < params[p].length; i++) {
+            arr.push(encodeURIComponent(p) + "[]=" + encodeURIComponent(params[p][i]));
+          }
+        }
+        else arr.push(encodeURIComponent(p) + "=" + encodeURIComponent(params[p]));
       }
     }
 
